@@ -62,7 +62,7 @@ body {
 }
 
 /* MAIN */
-.book-container {
+#book-container {
     grid-area: 2 / 2 / 3 / 3;
     padding: 3rem 1rem;
     display: grid;
