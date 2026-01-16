@@ -35,7 +35,7 @@ function deleteBook(bookId){
 
 }
 
-// add book card to the web page
+// add book card to the DOM
 function addBookCard(book) {
     // create card
     const bookCard = document.createElement('div');
@@ -46,19 +46,29 @@ function addBookCard(book) {
     bookContainer.appendChild(bookCard);
 
     // create card contents
-    const cardTitle = document.createElement('div');
+    const cardTitle = bookCard.appendChild(document.createElement('div'));
     cardTitle.classList.add('title');
     cardTitle.textContent = book.title;
 
-    const cardInfo = document.createElement('ul'); // todo: change html and css
+    const cardInfo = bookCard.appendChild(document.createElement('ul'));
     cardInfo.classList.add('info');
 
-    const cardBottomBar = document.createElement('div');
+    const author = cardInfo.appendChild(document.createElement('li'))
+    author.textContent = "Author: " + book.author;
+    
+    const pages = cardInfo.appendChild(document.createElement('li'));
+    pages.textContent = "Pages: " + book.pages;
+
+    const cardBottomBar = bookCard.appendChild(document.createElement('div'));
     cardBottomBar.classList.add('bottom-bar');
+    // add bottom bar contents
+}
 
-
-
-    // todo how to add children of children ? 'nested docking structure'
+// add full library to the DOM
+function addLibrary() {
+    for (let i = 0; i < library.length; i++) {
+	    console.log(i)
+    }
 }
 
 // creates a book and calls functions to add it to the library-list and to the page
@@ -69,3 +79,6 @@ function createBook(title, author, pages, read) {
 }
 
 createBook('A Memory Called Empire', 'Arkady Martine', 462, true);
+createBook('Ancillary Justice', 'Ann Leckie', 409, true);
+createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true)
+addLibrary();
