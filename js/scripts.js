@@ -51,10 +51,10 @@ function addBookCard(book) {
     cardInfo.classList.add('info');
 
     const author = cardInfo.appendChild(document.createElement('li'))
-    author.textContent = "Author: " + book.author;
+    author.textContent = book.author;
     
     const pages = cardInfo.appendChild(document.createElement('li'));
-    pages.textContent = "Pages: " + book.pages;
+    pages.textContent = book.pages + ' pages';
     
     // add bottom bar contents
     const cardBottomBar = bookCard.appendChild(document.createElement('div'));
@@ -63,14 +63,6 @@ function addBookCard(book) {
     const trashImg = cardBottomBar.appendChild(document.createElement('img'));
     trashImg.src = './bin/trash-can-outline.svg';
     trashImg.classList.add('icon');
-
-}
-
-// add full library to the DOM
-function addLibrary() {
-    for (let i = 0; i < library.length; i++) {
-	    console.log(i)
-    }
 }
 
 // creates a book and calls functions to add it to the library-list and to the page
@@ -83,4 +75,3 @@ function createBook(title, author, pages, read) {
 createBook('A Memory Called Empire', 'Arkady Martine', 462, true);
 createBook('Ancillary Justice', 'Ann Leckie', 409, true);
 createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true)
-addLibrary();
