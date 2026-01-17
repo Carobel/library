@@ -37,13 +37,10 @@ function deleteBook(bookId){
 
 // add book card to the DOM
 function addBookCard(book) {
-    // create card
-    const bookCard = document.createElement('div');
-    bookCard.classList.add('book');
-
-    //add card to card container on page and contents to card
+    // create card and add to card container
     const bookContainer = document.querySelector('#book-container');
-    bookContainer.appendChild(bookCard);
+    const bookCard = bookContainer.appendChild(document.createElement('div'));
+    bookCard.classList.add('book');
 
     // create card contents
     const cardTitle = bookCard.appendChild(document.createElement('div'));
@@ -58,10 +55,15 @@ function addBookCard(book) {
     
     const pages = cardInfo.appendChild(document.createElement('li'));
     pages.textContent = "Pages: " + book.pages;
-
+    
+    // add bottom bar contents
     const cardBottomBar = bookCard.appendChild(document.createElement('div'));
     cardBottomBar.classList.add('bottom-bar');
-    // add bottom bar contents
+
+    const trashImg = cardBottomBar.appendChild(document.createElement('img'));
+    trashImg.src = './bin/trash-can-outline.svg';
+    trashImg.classList.add('icon');
+
 }
 
 // add full library to the DOM
