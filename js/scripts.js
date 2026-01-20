@@ -75,7 +75,7 @@ function createBook(title, author, pages, read) {
 // placeholder books
 createBook('A Memory Called Empire', 'Arkady Martine', 462, true);
 createBook('Ancillary Justice', 'Ann Leckie', 409, true);
-createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true)
+createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true);
 
 // use plus icon to open the add book modal
 const modal = document.querySelector('dialog');

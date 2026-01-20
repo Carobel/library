@@ -61,6 +61,29 @@ body {
     font-size: 1.5rem;
 }
 
+/* MODAL */
+#modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border: none;
+}
+
+#modal form {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+#modal form .inputs{
+    display: flex;
+    flex-direction: column;
+}
+
 /* MAIN */
 #book-container {
     grid-area: 2 / 2 / 3 / 3;
