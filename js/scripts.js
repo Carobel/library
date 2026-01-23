@@ -77,10 +77,26 @@ createBook('A Memory Called Empire', 'Arkady Martine', 462, true);
 createBook('Ancillary Justice', 'Ann Leckie', 409, true);
 createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true);
 
+
+// EVENT LISTENERS
 // use plus icon to open the add book modal
 const modal = document.querySelector('dialog');
 const addButton = document.querySelector('.add-book');
 
 addButton.addEventListener('click', () => {
     modal.showModal();
+})
+
+// upon form submission, prevent default and add book to library
+const confirmBtn = document.querySelector('#confirmBtn');
+
+confirmBtn.addEventListener('click', (event) => {
+    const title = modal.querySelector('#title').value;
+    const author = modal.querySelector('#author').value;
+    const pages = modal.querySelector('#pages').value;
+    const read = modal.querySelector('#read').checked;
+    console.log(title, author, pages, read);
+
+    createBook(title, author, pages, read);
+    event.preventDefault();
 })
