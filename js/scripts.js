@@ -102,4 +102,6 @@ confirmBtn.addEventListener('click', (event) => {
     author.value = '';
     pages.value = '';
     event.preventDefault();
+    modal.close();
 })
+
