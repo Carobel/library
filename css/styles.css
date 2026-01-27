@@ -118,5 +118,7 @@ body {
 
 .book .bottom-bar {
     margin-top: auto;
-    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }

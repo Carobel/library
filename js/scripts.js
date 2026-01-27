@@ -55,6 +55,10 @@ function addBookCard(book) {
     const cardBottomBar = bookCard.appendChild(document.createElement('div'));
     cardBottomBar.classList.add('bottom-bar');
 
+    const checkImg = cardBottomBar.appendChild(document.createElement('img'));
+    checkImg.src = './bin/checkbox-blank-outline.svg';
+    checkImg.classList.add('icon');
+
     const trashImg = cardBottomBar.appendChild(document.createElement('img'));
     trashImg.src = './bin/trash-can-outline.svg';
     trashImg.classList.add('icon');
