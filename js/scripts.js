@@ -80,17 +80,19 @@ createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true);
 
 // EVENT LISTENERS
 // use plus icon to open the add book modal
+
 const modal = document.querySelector('dialog');
 const addButton = document.querySelector('.add-book');
+const addForm = modal.querySelector('form');
 
 addButton.addEventListener('click', () => {
     modal.showModal();
 })
 
 // upon form submission, prevent default and add book to library
-const confirmBtn = document.querySelector('#confirmBtn');
+// const confirmBtn = document.querySelector('#confirmBtn');
 
-confirmBtn.addEventListener('click', (event) => {
+addForm.addEventListener('submit', (event) => {
     // create book from form submission
     const title = modal.querySelector('#title');
     const author = modal.querySelector('#author');
