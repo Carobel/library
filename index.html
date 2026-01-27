@@ -29,13 +29,13 @@
                     <label for="author">Author:</label>
                     <input type="text" name="author" id="author" required>
                     <label for="pages">Pages:</label>
-                    <input type="number" name="pages" id="pages">
+                    <input type="number" name="pages" id="pages" required>
                     <label for="read">Read:</label>
                     <input type="checkbox" id="read" name="read" class="slider round">
                 </div>
                 <div class="actions">
-                    <button type="submit" id="confirmBtn">Add</button>
-                    <button value="cancel" formmethod="dialog" formnovalidate>Cancel</button>
+                    <button type="submit" id="confirm-btn">Add</button>
+                    <button id="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
                 </div>
             </form>
         </dialog>

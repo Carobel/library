@@ -41,6 +41,7 @@ function addBookCard(book) {
     const bookContainer = document.querySelector('#book-container');
     const bookCard = bookContainer.appendChild(document.createElement('div'));
     bookCard.classList.add('book');
+    bookCard.dataset.id = book.id;
 
     // create card contents
     const cardTitle = bookCard.appendChild(document.createElement('div'));
@@ -80,18 +81,23 @@ createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true);
 
 // EVENT LISTENERS
 // use plus icon to open the add book modal
-
 const modal = document.querySelector('dialog');
 const addButton = document.querySelector('.add-book');
 const addForm = modal.querySelector('form');
+const cancelBtn = modal.querySelector('#cancel-btn');
 
+// show add book modal
 addButton.addEventListener('click', () => {
     modal.showModal();
 })
 
-// upon form submission, prevent default and add book to library
-// const confirmBtn = document.querySelector('#confirmBtn');
+// handle cancel button
+cancelBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    modal.close();
+})
 
+// upon form submission, prevent default and add book to library
 addForm.addEventListener('submit', (event) => {
     // create book from form submission
     const title = modal.querySelector('#title');
@@ -107,4 +113,5 @@ addForm.addEventListener('submit', (event) => {
     event.preventDefault();
     modal.close();
 })
+
 
