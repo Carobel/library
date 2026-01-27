@@ -15,18 +15,17 @@ function Book(title, author, pages, read) {
 
 // toggle a book's read status
 Book.prototype.toggle = function() {
-    this.toggle = !this.toggle;
+    this.read = !this.read;
 }
 
-// delete book by id number
-function deleteBook(bookId){
+// find book index by id number
+function findBookIndex(bookId) {
     // throw error if book by this id does not exist
     const targetIndex = library.findIndex(book => book.id == bookId);
     if (targetIndex === -1) {
         throw Error('Book not found.')
     }
-    // delete from library
-    library.splice(targetIndex, 1);
+    return targetIndex;
 }
 
 // create and add book card to the DOM
@@ -55,14 +54,15 @@ function addBookCard(book) {
     const cardBottomBar = bookCard.appendChild(document.createElement('div'));
     cardBottomBar.classList.add('bottom-bar');
 
-    const checkImg = cardBottomBar.appendChild(document.createElement('img'));
-    checkImg.src = './bin/checkbox-blank-outline.svg';
-    checkImg.classList.add('icon');
+    const readCheck = cardBottomBar.appendChild(document.createElement('input'));
+    readCheck.type = 'checkbox';
+    readCheck.checked = book.read;
+    readCheck.addEventListener('change', toggleRead);
 
     const trashImg = cardBottomBar.appendChild(document.createElement('img'));
     trashImg.src = './bin/trash-can-outline.svg';
     trashImg.classList.add('icon');
-    trashImg.addEventListener('click', deleteBookCard);
+    trashImg.addEventListener('click', deleteBook);
 }
 
 // creates a book and calls functions to add it to the library-list and to the page
@@ -84,11 +84,19 @@ function refreshCards() {
     }
 }
 
-// deletes a book based on id
-function deleteBookCard(event) {
-    targetId = event.target.closest('.book').dataset.id;
-    deleteBook(targetId);
+// handle clicks on a book's delete button
+function deleteBook(event) {
+    const targetId = event.target.closest('.book').dataset.id;
+    const targetIndex = findBookIndex(targetId);
+    library.splice(targetIndex, 1);
     refreshCards();
+}
+
+// handle clicks on a book's read toggle
+function toggleRead(event) {
+    targetId = event.target.closest('.book').dataset.id;
+    const targetIndex = findBookIndex(targetId);
+    library[targetIndex].toggle();
 }
 
 // placeholder books
