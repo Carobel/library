@@ -91,13 +91,14 @@ addButton.addEventListener('click', () => {
 const confirmBtn = document.querySelector('#confirmBtn');
 
 confirmBtn.addEventListener('click', (event) => {
+    // create book from form submission
     const title = modal.querySelector('#title');
     const author = modal.querySelector('#author');
     const pages = modal.querySelector('#pages');
     const read = modal.querySelector('#read');
-    console.log(title, author, pages, read);
-
     createBook(title.value, author.value, pages.value, read.checked);
+
+    // empty form
     title.value = '';
     author.value = '';
     pages.value = '';

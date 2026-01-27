@@ -17,8 +17,12 @@
             <h1>Library</h1>
         </div>
         <img src="bin/plus.svg" alt="plus icon" class="icon add-book">
-        <dialog id="modal">
-            <form action="">
+    </div>
+    <div class="header-side"></div>
+
+    <!-- Modal -->
+            <dialog id="modal">
+            <form>
                 <div class="inputs">
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title" required autofocus>
@@ -30,13 +34,12 @@
                     <input type="checkbox" id="read" name="read" class="slider round">
                 </div>
                 <div class="actions">
-                    <button type="submit" id="confirmBtn" formmethod="dialog">Add</button>
+                    <button type="submit" id="confirmBtn">Add</button>
                     <button value="cancel" formmethod="dialog" formnovalidate>Cancel</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </dialog>
-    </div>
-    <div class="header-side"></div>
+        
     <!-- Main -->
     <div id="book-container"></div>
 </body>
