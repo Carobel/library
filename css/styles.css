@@ -120,5 +120,15 @@ body {
     margin-top: auto;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 10px;
+}
+
+.book input {
+    height: 25px;
+    width: 25px;
+}
+
+.book input:checked {
+    box-shadow: 0 0 0 3px hotpink;
 }
