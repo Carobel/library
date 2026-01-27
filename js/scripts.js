@@ -18,24 +18,18 @@ Book.prototype.toggle = function() {
     this.toggle = !this.toggle;
 }
 
-// add book to the library array
-function addBook(book) {
-    library.push(book);
-}
-
 // delete book by id number
 function deleteBook(bookId){
-    //throw error if book by this id does not exist
-    const target = library.findIndex(book => book.id == bookId);
-    if (target === -1) {
+    // throw error if book by this id does not exist
+    const targetIndex = library.findIndex(book => book.id == bookId);
+    if (targetIndex === -1) {
         throw Error('Book not found.')
     }
-    //need to +1 because slice starts counting from 1 instead of 0
-    library.slice(target+1);
-
+    // delete from library
+    library.splice(targetIndex, 1);
 }
 
-// add book card to the DOM
+// create and add book card to the DOM
 function addBookCard(book) {
     // create card and add to card container
     const bookContainer = document.querySelector('#book-container');
@@ -64,13 +58,33 @@ function addBookCard(book) {
     const trashImg = cardBottomBar.appendChild(document.createElement('img'));
     trashImg.src = './bin/trash-can-outline.svg';
     trashImg.classList.add('icon');
+    trashImg.addEventListener('click', deleteBookCard);
 }
 
 // creates a book and calls functions to add it to the library-list and to the page
 function createBook(title, author, pages, read) {
-    const book1 = new Book(title, author, pages, read);
-    addBook(book1);
-    addBookCard(book1);
+    const book = new Book(title, author, pages, read);
+    library.push(book);
+    refreshCards();
+}
+
+// refrehses book container (in DOM) based on current library
+function refreshCards() {
+    const bookContainer = document.querySelector('#book-container');
+    // delete all
+    bookContainer.textContent = '';
+
+    // add cards again based on library
+    for (const book of library) {
+        addBookCard(book);
+    }
+}
+
+// deletes a book based on id
+function deleteBookCard(event) {
+    targetId = event.target.closest('.book').dataset.id;
+    deleteBook(targetId);
+    refreshCards();
 }
 
 // placeholder books
@@ -79,7 +93,7 @@ createBook('Ancillary Justice', 'Ann Leckie', 409, true);
 createBook('Gideon the Ninth', 'Tamsyn Muir', 448, true);
 
 
-// EVENT LISTENERS
+// ADD BOOK MODAL
 // use plus icon to open the add book modal
 const modal = document.querySelector('dialog');
 const addButton = document.querySelector('.add-book');
@@ -113,5 +127,7 @@ addForm.addEventListener('submit', (event) => {
     event.preventDefault();
     modal.close();
 })
+
+
 
 
