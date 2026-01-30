@@ -14,7 +14,7 @@ ul {
 }
 
 input, button, textarea, select {
-  font: inherit;
+  font-family: inherit;
 }
 
 /* GLOBAL */
@@ -92,19 +92,42 @@ input[type="checkbox"]:checked::before {
 
 #modal form {
     height: 400px;
+    width: 230px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 #modal form .inputs{
     display: flex;
     flex-direction: column;
+    gap: 3px;
+}
+
+#modal form input {
+    margin-bottom: 10px;
+    width: 180px;
+    font-size: 1.1rem;
 }
 
 #modal form input[type="checkbox"] {
     border: 2px solid black;
+    width: 25px;
+    font-size: 1rem;
+}
+
+#modal .actions {
+    align-self: flex-end;
+}
+
+#modal button {
+    background-color: rgb(219, 168, 192);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    font-size: 1.2rem;
 }
 
 /* MAIN */
